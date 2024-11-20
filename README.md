@@ -33,8 +33,8 @@ The SDK requires credentials, which should be passed via system environment vari
 - `redirect_uri` – redirect uri / domain
 
 #### Optional Credentials:
-- `access_token`
-- `privilege_token`
+- `access_token` - Your Developer JWT
+- `privilege_token` - Your Vehicle JWT
 
 To set your credentials, export them as environment variables from your terminal:
 
@@ -64,15 +64,15 @@ echo $client_id
 
 There are two types of tokens in the DIMO SDK:
 
-1. **Access Token**: This token is generally used for authenticated endpoints.
-    - To obtain the `access_token`, ensure the three required environment variables (`client_id`, `api_key`, and `redirect_uri`) are set.
+1. **Developer JWT**: This token is generally used for authenticated endpoints.
+    - To obtain the `Developer JWT`, ensure the three required environment variables (`client_id`, `api_key`, and `redirect_uri`) are set.
     ```rust
     let token = dimo.get_token().await;
    ```
     - Store the returned token string as an environment variable to use it.
    
 
-2. **Privilege Token**: This token is needed for certain REST endpoints that require a `token_id`, and some GraphQL endpoints (`dimo.telemetry`).
+2. **Vehicle JWT**: This token is needed for certain REST endpoints that require a `token_id`, and some GraphQL endpoints (`dimo.telemetry`).
     - Obtained by calling the token exchange endpoint. 
       ```rust
       dimo.tokenexchange.exchange(1, vec![2, 3])
@@ -81,7 +81,7 @@ There are two types of tokens in the DIMO SDK:
 
 ## Querying the REST API
 
-To interact with the REST API, use the appropriate method in the SDK, passing the required parameters. Some methods will require an `access_token` to authenticate the request.
+To interact with the REST API, use the appropriate method in the SDK, passing the required parameters. Some methods will require a `Developer JWT` to authenticate the request.
 
 All entry points in the main `dimo` struct are rest endpoints, except those in the graphql section below. 
 
@@ -110,4 +110,4 @@ let result = dimo.identity.query(query).await;
 
 This query is equivalent to calling `dimo.identity.count_dimo_vehicles()`.
 
-> **Note**: The `telemetry` API (`dimo.telemetry`) requires a `privilege_token`. Ensure that the appropriate token is set before querying telemetry-related endpoints.
+> **Note**: The `telemetry` API (`dimo.telemetry`) requires a `Vehicle JWT`. Ensure that the appropriate token is set before querying telemetry-related endpoints.
