@@ -1,7 +1,13 @@
 [package]
 name = "dimo-rust-sdk"
+description = "Community-driven DIMO SDK in Rust"
 version = "0.1.0"
 edition = "2021"
+license-file = "LICENSE"
+homepage = "https://docs.dimo.org/developer-platform"
+repository = "https://github.com/DIMO-Network/dimo-rust-sdk"
+readme = "README.md"
+keywords = ["dimo"]
 
 [dependencies]
 hex = "0.4"
