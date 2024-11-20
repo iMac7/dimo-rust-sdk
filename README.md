@@ -82,9 +82,9 @@ There are two types of tokens in the DIMO SDK:
 ## Querying the REST API
 
 To interact with the REST API, use the appropriate method in the SDK, passing the required parameters. Some methods will require an `access_token` to authenticate the request.
+
 All entry points in the main `dimo` struct are rest endpoints, except those in the graphql section below. 
 
-Example usage:
 
 ```rust
 dimo.devicedefinitions.get_by_id("0x23dfdf");
@@ -92,7 +92,7 @@ dimo.devicedefinitions.get_by_id("0x23dfdf");
 
 ## Querying the GraphQL API
 
-The SDK provides access to the GraphQL API through two entry points (`dimo.identity` , `dimo.telemetry`) in the `DIMO` struct. These entry points each have methods that allow you to interact with the API:
+The SDK provides access to the GraphQL API through two entry points (`dimo.identity` , `dimo.telemetry`) in the `DIMO` struct, each with several methods available. 
 
 `query()`: This method accepts any valid GraphQL query string and sends it to the respective endpoint.
 
