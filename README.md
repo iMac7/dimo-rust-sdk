@@ -49,7 +49,7 @@ export redirect_uri="http://thatplace.com/doesntexist"
 You can check the currently set credentials by calling the `get_credentials()` function:
 
 ```rust
-use rust_sdk::{utils::request::get_credentials};
+use rust_sdk::{get_credentials};
 
 let credentials = get_credentials();
 ```
@@ -85,9 +85,24 @@ To interact with the REST API, use the appropriate method in the SDK, passing th
 
 All entry points in the main `dimo` struct are rest endpoints, except those in the graphql section below. 
 
-
 ```rust
 dimo.devicedefinitions.get_by_id("0x23dfdf");
+```
+
+Some methods have optional parameters denoted by `Option<Type>`, you can use `None` in place of the parameter.
+
+```rust
+let result = dimo.devices.create_vehicle_from_vin("12345", "254", None);
+```
+
+Where a `Value` type is required, use the exported `Value` from the sdk.
+
+```rust
+use dimo_rust_sdk::{Value};
+
+let mut data = HashMap::new();
+data.insert("hello".to_string(), Value::String("world".to_string()));
+let result = dimo.attestation.create_pom_vc("1", data).await;
 ```
 
 ## Querying the GraphQL API

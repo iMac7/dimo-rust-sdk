@@ -8,16 +8,6 @@ pub struct AttestationClient {
     base_url: String,
 }
 
-pub struct VinVCParams {
-    pub token_id: String,
-    pub data: HashMap<String, String>,
-}
-
-pub struct PomVCParams {
-    pub token_id: String,
-    pub data: HashMap<String, Value>,
-}
-
 impl AttestationClient {
     pub fn new(base_url: String) -> Self {
         Self { base_url }
@@ -45,15 +35,15 @@ impl AttestationClient {
         make_auth_request(request_params).await
     }
 
-    pub async fn create_pom_vc(&self, params: PomVCParams) -> Result<Value, Box<dyn Error>> {
-        let path = format!("/v1/vc/pom/{}", params.token_id);
+    pub async fn create_pom_vc(&self, token_id: &str, data: HashMap<String, Value>) -> Result<Value, Box<dyn Error>> {
+        let path = format!("/v1/vc/pom/{}", token_id);
 
         let request_params = AuthRequestParams {
             method: Method::POST,
             base_url: self.base_url.to_string(),
             path,
             query_params: None,
-            body: Some(params.data),
+            body: Some(data),
             headers: None,
             token_type: "privilege".to_string(),
         };

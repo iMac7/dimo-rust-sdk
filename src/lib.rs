@@ -3,6 +3,8 @@ pub mod graphql;
 pub mod rest;
 pub mod utils;
 
+pub use serde_json::Value;
+pub use utils::credentials::get_credentials;
 use environments::dimo_environment;
 use graphql::{Identity, Telemetry};
 use rest::{
@@ -15,7 +17,6 @@ use rest::{
     valuations::Valuations,
     vehiclesignaldecoding::VehicleSignalDecoding,
 };
-use utils::credentials::get_credentials;
 
 #[derive(Clone, Copy)]
 pub enum Environment {
