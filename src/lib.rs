@@ -15,7 +15,6 @@ use rest::{
     tokenexchange::TokenExchange,
     trips::Trips,
     valuations::Valuations,
-    vehiclesignaldecoding::VehicleSignalDecoding,
 };
 
 #[derive(Clone, Copy)]
@@ -32,7 +31,6 @@ pub struct DIMO {
     pub tokenexchange: TokenExchange,
     pub trips: Trips,
     pub valuations: Valuations,
-    pub vehiclesignaldecoding: VehicleSignalDecoding,
     pub identity: Identity,
     pub telemetry: Telemetry,
 }
@@ -56,7 +54,6 @@ impl DIMO {
             tokenexchange: TokenExchange::new(routes.token_exchange, constants.nft_address),
             trips: Trips::new(routes.trips),
             valuations: Valuations::new(routes.valuations),
-            vehiclesignaldecoding: VehicleSignalDecoding::new(routes.vehicle_signal_decoding),
             identity: Identity::new(routes.identity),
             telemetry: Telemetry::new(routes.telemetry),
         }

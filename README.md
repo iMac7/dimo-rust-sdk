@@ -125,4 +125,6 @@ let result = dimo.identity.query(query).await;
 
 This query is equivalent to calling `dimo.identity.count_dimo_vehicles()`.
 
+To check whether your GraphQL query is valid, paste it in the [Identity API GraphQL Playground](https://identity-api.dimo.zone/) or [Telemetry API GraphQL Playground](https://telemetry-api.dimo.zone/).
+
 > **Note**: The `telemetry` API (`dimo.telemetry`) requires a `Vehicle JWT`. Ensure that the appropriate token is set before querying telemetry-related endpoints.
