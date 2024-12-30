@@ -35,7 +35,7 @@ impl AttestationClient {
         make_auth_request(request_params).await
     }
 
-    pub async fn create_pom_vc(&self, token_id: &str, data: HashMap<String, Value>) -> Result<Value, Box<dyn Error>> {
+    pub async fn create_pom_vc(&self, token_id: &str) -> Result<Value, Box<dyn Error>> {
         let path = format!("/v1/vc/pom/{}", token_id);
 
         let request_params = AuthRequestParams {
@@ -43,7 +43,7 @@ impl AttestationClient {
             base_url: self.base_url.to_string(),
             path,
             query_params: None,
-            body: Some(data),
+            body: None,
             headers: None,
             token_type: "privilege".to_string(),
         };

@@ -39,7 +39,7 @@ impl AuthClient {
         let mut query_params: HashMap<String, String> = HashMap::new();
         query_params.insert("client_id".to_string(), client_id.to_string());
         query_params.insert("domain".to_string(), domain.to_string());
-        query_params.insert("scope".to_string(), "openid".to_string());
+        query_params.insert("scope".to_string(), "openid email".to_string());
         query_params.insert("response_type".to_string(), "code".to_string());
         query_params.insert("address".to_string(), client_id.to_string());
 
