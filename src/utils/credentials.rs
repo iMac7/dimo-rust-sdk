@@ -13,16 +13,16 @@ pub struct Credentials {
     pub client_id: String,
     pub private_key: String,
     pub domain: String,
-    pub access_token: String,
-    pub privilege_token: String,
+    pub developer_jwt: String,
+    pub vehicle_jwt: String,
 }
 
 pub fn get_credentials() -> Result<Credentials, Box<dyn Error>> {
-    let client_id = env::var("client_id").unwrap_or_default();
-    let private_key = env::var("api_key").unwrap_or_default();
-    let domain = env::var("redirect_uri").unwrap_or_default();
-    let access_token = env::var("access_token").ok().unwrap_or_default();
-    let privilege_token = env::var("privilege_token").ok().unwrap_or_default();
+    let client_id = env::var("CLIENT_ID").unwrap_or_default();
+    let private_key = env::var("API_KEY").unwrap_or_default();
+    let domain = env::var("REDIRECT_URI").unwrap_or_default();
+    let developer_jwt = env::var("DEVELOPER_JWT").ok().unwrap_or_default();
+    let vehicle_jwt = env::var("VEHICLE_JWT").ok().unwrap_or_default();
 
     let mut missing_fields = Vec::new();
     if client_id.is_empty() {
@@ -43,7 +43,7 @@ pub fn get_credentials() -> Result<Credentials, Box<dyn Error>> {
         client_id,
         private_key,
         domain,
-        access_token,
-        privilege_token,
+        developer_jwt,
+        vehicle_jwt,
     })
 }

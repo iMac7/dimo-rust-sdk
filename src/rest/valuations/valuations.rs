@@ -24,7 +24,7 @@ impl Valuations {
             query_params: None,
             body: None,
             headers: None,
-            token_type: "privilege".to_string(),
+            token_type: "vehicle".to_string(),
         };
 
         make_auth_request(request_params).await
@@ -40,7 +40,7 @@ impl Valuations {
             query_params: None,
             body: None,
             headers: None,
-            token_type: "privilege".to_string(),
+            token_type: "vehicle".to_string(),
         };
 
         make_auth_request(request_params).await
@@ -56,7 +56,7 @@ impl Valuations {
             query_params: None,
             body: None,
             headers: None,
-            token_type: "privilege".to_string(),
+            token_type: "vehicle".to_string(),
         };
 
         make_auth_request(request_params).await
