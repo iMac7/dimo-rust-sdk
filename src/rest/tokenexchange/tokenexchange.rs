@@ -47,7 +47,7 @@ impl TokenExchange {
             query_params: None,
             body: Some(body),
             headers: None,
-            token_type: "access".to_string(),
+            token_type: "developer".to_string(),
         };
 
         make_auth_request(request_params).await

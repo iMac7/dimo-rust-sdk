@@ -25,7 +25,7 @@ impl Telemetry {
             query_params: None,
             body: Some(body),
             headers: None,
-            token_type: "privilege".to_string(),
+            token_type: "vehicle".to_string(),
         };
 
         make_auth_request(params).await

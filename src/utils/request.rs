@@ -37,14 +37,14 @@ pub struct AuthRequestParams {
 }
 
 /// Builds the authorization header using the appropriate token from `get_credentials`.
-/// `token_type` should be either "access" (for access token) or "privilege" (for privilege token).
+/// `token_type` should be either "developer" (for developer jwt) or "vehicle" (for vehicle jwt).
 fn build_auth_header(token_type: &str) -> Result<HashMap<String, String>, Box<dyn Error>> {
     let credentials = get_credentials()?;
 
     let token = match token_type {
-        "access" => &credentials.access_token,
-        "privilege" => &credentials.privilege_token,
-        _ => return Err("Invalid token type specified. Use 'access' or 'privilege'.".into()),
+        "developer" => &credentials.developer_jwt,
+        "vehicle" => &credentials.vehicle_jwt,
+        _ => return Err("Invalid token type specified. Use 'developer' or 'vehicle'.".into()),
     };
 
     let mut headers = HashMap::new();

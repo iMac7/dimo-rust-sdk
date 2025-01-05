@@ -28,22 +28,22 @@ let mut dimo = DIMO::new(Environment::Production);
 The SDK requires credentials, which should be passed via system environment variables. Below are the required and optional credentials:
 
 #### Required Credentials:
-- `client_id`
-- `api_key` – The API key / private key for your DIMO account.
-- `redirect_uri` – redirect uri / domain
+- `CLIENT_ID`
+- `API_KEY` – The API key / private key for your DIMO account.
+- `REDIRECT_URI` – redirect uri / domain
 
 #### Optional Credentials:
-- `access_token` - Your Developer JWT
-- `privilege_token` - Your Vehicle JWT
+- `DEVELOPER_JWT`
+- `VEHICLE_JWT`
 
 To set your credentials, export them as environment variables from your terminal:
 
 ```bash
-export client_id="DIMO_CLIENT_ID"
+export CLIENT_ID="DIMO_CLIENT_ID"
 
-export api_key="DIMO_API_KEY"
+export API_KEY="DIMO_API_KEY"
 
-export redirect_uri="http://thatplace.com/doesntexist"
+export REDIRECT_URI="http://thatplace.com/doesntexist"
 ```
 
 You can check the currently set credentials by calling the `get_credentials()` function:
